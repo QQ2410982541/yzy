@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈华红 - 角色卡</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+
+        .character-card {
+            background-color: #FFE4E1; /* 浅红色背景 */
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .header {
+            background-color: #FF000; /* 橙红色标题背景 */
+            color: white;
+            padding: 20px 20px 40px; /* 增加底部内边距容纳头像 */
+            text-align: center;
+            position: relative; /* 用于定位头像框架 */
+        }
+
+        /* 新增头像框架样式 */
+        .avatar-frame {
+            width: 70px;
+            height: 70px;
+            border-radius: 500px; /* 圆角4px */
+            border: 4px solid white; /* 白色边框 */
+            box-shadow: 0 0 12px rgba(0,0,0,0.2); /* 轻微阴影 */
+            margin: 20px auto 0; /* 居中显示 */
+            overflow: hidden; /* 裁剪超出部分 */
+        }
+
+        .avatar-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 保持图片比例并填充容器 */
+            display: block; /* 去除图片底部间隙 */
+        }
+
+        .character-name {
+            
+            margin: 0;
+            letter-spacing: 2px; /* 增加字母间距 */
+
+        }
+
+        .skill {
+            padding: 10px;
+        }
+
+        .skill-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #FF4500; /* 技能标题颜色 */
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #FF6347; /* 技能图标颜色 */
+            border-radius: 50%;
+            margin-right: 10px;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .skill-desc {
+            line-height: 1.5;
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .stat {
+            background-color: #FFE4E1; /* 统计信息背景色 */
+            padding: 5px 10px;
+            border-radius: 15px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        /* 新增头像呼吸动画 */
+@keyframes avatar-pulse {
+    0% { 
+        transform: scale(1.2); 
+        box-shadow: 
+            0 0 0 0 rgba(255, 69, 0, 0.25),  /* 第一层阴影 */
+            0 0 0 0 rgba(255, 69, 0, 0.15),  /* 第二层阴影 */
+            0 0 0 0 rgba(255, 69, 0, 0.1);   /* 第三层阴影 */
+    }
+    50% { 
+        transform: scale(1.0); 
+        box-shadow: 
+            0 0 0 45px rgba(255, 69, 0, 0),   /* 第一层扩散并消失 */
+            0 0 0 25px rgba(255, 69, 0, 0.1), /* 第二层扩散 */
+            0 0 0 15px rgba(255, 69, 0, 0.2);  /* 第三层扩散 */
+    }
+    100% { 
+        transform: scale(1.2); 
+        box-shadow: 
+            0 0 0 50px rgba(255, 69, 0, 0),   /* 第一层完全消失 */
+            0 0 0 30px rgba(255, 69, 0, 0),   /* 第二层消失 */
+            0 0 0 10px rgba(255, 69, 0, 0);   /* 第三层消失 */
+    }
+}
+
+
+.avatar-frame {
+    animation: avatar-pulse 3s infinite;
+    border-radius: 100%; /* 确保圆形波纹效果 */
+}
+
+
+    </style>
+</head>
+
+<body>
+    <div class="character-card">
+<div class="header">
+    <div class="avatar-frame">
+        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/bot-chat-image/f609c966c2ef402bb9400e213bd084c2~tplv-a9rns2rl98-24:720:720.image?rk3s=583e7a91&x-expires=1745244342&x-signature=53f3M31adDAImFE2ccvRt91L%2Brg%3D" alt="陈华红头像">
+    </div>
+    <h1 class="character-name"></h1>
+</div>
+
+
+        </div>
+        <div class="skill">
+            <div class="skill-title">
+                <span class="skill-icon">1</span>
+                <span>舌绽金莲</span>
+            </div>
+            <div class="skill-desc">
+                陈华红运转技能，字字如金莲绽放，话语里裹挟绝对信服力，能让周遭之人毫无抵抗地听从指令 ，自带群体精神控制效果。
+            </div>
+            <div class="stats">
+                <div class="stat">+群体精神控制</div>
+                <div class="stat">强制听从指令</div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-title">
+                <span class="skill-icon">2</span>
+                <span>妙笔天成</span>
+            </div>
+            <div class="skill-desc">
+                只需随心挥笔，笔下文字如有神助，瞬间幻化成顶级佳作，范围内的敌人与友军都会被深深吸引，陷入持续数秒的沉醉状态，期间无法进行攻击和移动。
+            </div>
+            <div class="stats">
+                <div class="stat">-攻击/移动禁用</div>
+                <div class="stat">范围沉醉效果</div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-title">
+                <span class="skill-icon">3</span>
+                <span>御证守护</span>
+            </div>
+            <div class="skill-desc">
+                紧急关头，陈华红快速亮出保安证，瞬间生成一层能量护盾，可吸收大部分伤害。护盾存在期间，自身暴击率提升30%，免疫所有负面状态。
+            </div>
+            <div class="stats">
+                <div class="stat">30%暴击率提升</div>
+                <div class="stat">负面状态免疫</div>
+                <div class="stat">护盾吸收伤害</div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-title">
+                <span class="skill-icon">4</span>
+                <span>墨狱囚封（大招）</span>
+            </div>
+            <div class="skill-desc">
+                陈华红怒气满值，周身墨气翻涌，凝聚成强大的封印之力。可将视野内单个目标强行拉扯进墨化的纸张世界，目标被封印期间，无法使用技能且持续掉血。
+            </div>
+            <div class="stats">
+                <div class="stat">单体封印控制</div>
+                <div class="stat">封印期禁技能</div>
+                <div class="stat">持续掉血效果</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
