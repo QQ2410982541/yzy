@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欧阳海立 - 角色卡</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+
+        .character-card {
+            background-color: #FFE4E1; /* 浅红色背景 */
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .header {
+            background-color: #FF000; /* 橙红色标题背景 */
+            color: white;
+            padding: 20px 20px 40px; /* 增加底部内边距容纳头像 */
+            text-align: center;
+            position: relative; /* 用于定位头像框架 */
+        }
+
+        /* 新增头像框架样式 */
+        .avatar-frame {
+            width: 100px;
+            height: 100px;
+            border-radius: 500px; /* 圆角4px */
+            border: 4px solid white; /* 白色边框 */
+            box-shadow: 0 0 12px rgba(0,0,0,0.2); /* 轻微阴影 */
+            margin: 20px auto 0; /* 居中显示 */
+            overflow: hidden; /* 裁剪超出部分 */
+        }
+
+        .avatar-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 保持图片比例并填充容器 */
+            display: block; /* 去除图片底部间隙 */
+        }
+
+        .character-name {
+            
+            margin: 0;
+            letter-spacing: 2px; /* 增加字母间距 */
+
+        }
+
+        .skill {
+            padding: 10px;
+        }
+
+        .skill-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #FF4500; /* 技能标题颜色 */
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #FF6347; /* 技能图标颜色 */
+            border-radius: 50%;
+            margin-right: 10px;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .skill-desc {
+            line-height: 1.5;
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .stat {
+            background-color: #FFE4E1; /* 统计信息背景色 */
+            padding: 5px 10px;
+            border-radius: 15px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        /* 新增头像呼吸动画 */
+@keyframes avatar-pulse {
+    0% { 
+        transform: scale(1.2); 
+        box-shadow: 
+            0 0 0 0 rgba(255, 69, 0, 0.25),  /* 第一层阴影 */
+            0 0 0 0 rgba(255, 69, 0, 0.15),  /* 第二层阴影 */
+            0 0 0 0 rgba(255, 69, 0, 0.1);   /* 第三层阴影 */
+    }
+    50% { 
+        transform: scale(1.0); 
+        box-shadow: 
+            0 0 0 45px rgba(255, 69, 0, 0),   /* 第一层扩散并消失 */
+            0 0 0 25px rgba(255, 69, 0, 0.1), /* 第二层扩散 */
+            0 0 0 15px rgba(255, 69, 0, 0.2);  /* 第三层扩散 */
+    }
+    100% { 
+        transform: scale(1.2); 
+        box-shadow: 
+            0 0 0 50px rgba(255, 69, 0, 0),   /* 第一层完全消失 */
+            0 0 0 30px rgba(255, 69, 0, 0),   /* 第二层消失 */
+            0 0 0 10px rgba(255, 69, 0, 0);   /* 第三层消失 */
+    }
+}
+
+
+.avatar-frame {
+    animation: avatar-pulse 3s infinite;
+    border-radius: 100%; /* 确保圆形波纹效果 */
+}
+
+
+    </style>
+</head>
+
+<body>
+    <div class="character-card">
+<div class="header">
+    <div class="avatar-frame">
+        <img src="https://pb.nichi.co/aisle-display-hard" alt="欧阳海立头像">
+    </div>
+</div>
+
+
+        </div>
+        <div class="skill">
+            <div class="skill-title">
+                <span class="skill-icon">1</span>
+                <span>冥想空语</span>
+            </div>
+            <div class="skill-desc">
+                开启技能后，欧阳海立进入冥想状态，对着空气喃喃自语。在这种空灵的状态下，他能有效汇聚游离能量，强化自身意识，提升15%的能量储备与感知敏锐度，为后续战斗提供助力。
+            </div>
+            <div class="stats">
+                <div class="stat">+15% 能量储备</div>
+                <div class="stat">提升感知敏锐度</div>
+                <div class="stat">冥想状态</div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-title">
+                <span class="skill-icon">2</span>
+                <span>扰心咒念</span>
+            </div>
+            <div class="skill-desc">
+                欧阳海立施展此技，口中吐出一连串咒念。咒念化作无形声波，渗入敌方思维，使其陷入混乱，头疼欲裂，烦躁难安。中招者攻击命中率降低20%，技能释放失误率提升30%。
+            </div>
+            <div class="stats">
+                <div class="stat">-20% 命中率</div>
+                <div class="stat">+30% 失误率</div>
+                <div class="stat">精神干扰</div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-title">
+                <span class="skill-icon">3</span>
+                <span>幻梦隐护</span>
+            </div>
+            <div class="skill-desc">
+                发动技能时，欧阳海立仿若陷入幻梦，呈现没睡醒的朦胧状态。此刻他进入虚无保护机制，每秒恢复5%的精力，且在5秒内免疫控制效果与50%的伤害。
+            </div>
+            <div class="stats">
+                <div class="stat">5% 精力恢复</div>
+                <div class="stat">5秒免疫控制</div>
+                <div class="stat">50% 减伤</div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-title">
+                <span class="skill-icon">4</span>
+                <span>方法心控</span>
+            </div>
+            <div class="skill-desc">
+                面对敌方任何招式，欧阳海立施展此技，释放出神秘方法之力。该力量直击敌方心灵，使敌方在接下来的8秒内，不由自主听从欧阳海立指令，完全受其操控。
+            </div>
+            <div class="stats">
+                <div class="stat">8秒控制</div>
+                <div class="stat">心灵操控</div>
+                <div class="stat">强制服从</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
