@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>端午节活动及放假通知</title>
+    <style>
+        body {
+            font-size: 16px;
+            line-height: 1.6;
+            font-family: 'Segoe UI', sans-serif;
+            color: #444;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 500;
+            margin: 1.5rem 0;
+        }
+
+        .collection-header h5 {
+            font-size: 20px;
+            color: #00897b;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .collection-item {
+            padding: 1.2rem 1.5rem;
+            background-color: #f9f9f9;
+            margin-bottom: 0.8rem;
+            border-radius: 4px;
+        }
+
+        .collection-item p {
+            margin-bottom: 0.5rem;
+        }
+
+        .important {
+            color: #009688;
+            font-weight: 500;
+        }
+
+        .fixed-action-btn {
+            right: 24px;
+            bottom: 24px;
+            z-index: 999;
+        }
+
+        .nav-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: #009688;
+            box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12);
+            transition: transform 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-btn i {
+            font-size: 24px;
+            color: white;
+            line-height: 56px;
+        }
+/* 新增扁平风格按钮样式 */
+  .flat-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #009688;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 999;
+    transition: background-color 0.3s ease;
+  }
+
+  .flat-btn:hover {
+    background-color: #00897b; /* 深色hover效果 */
+  }
+
+  .flat-btn i {
+    font-size: 24px;
+    color: white;
+  }
+a {
+  text-decoration: none !important;
+}
+
+    </style>
+</head>
+<body class="grey lighten-4">
+    <div class="container">
+        <div class="card white z-depth-1">
+            <div class="card-content">
+                <span class="card-title center-align teal-text text-darken-4">
+                    <i class="material-icons left">event</i>
+                    端午节活动及放假通知<br><br>
+                </span>
+
+                <div class="divider"></div>
+
+                <ul class="collection with-header">
+                    <li class="collection-header">
+                        <h5>一、企业文化活动调整</h5>
+                    </li>
+                    <li class="collection-item">
+                        <p>活动类型：集体聚餐庆祝端午节<br>
+                           集合时间：下午下班<br>
+                           地点：塘尾 <span class="important">湘土人家二楼</span><br>
+                           开席时间：<span class="important">18:40</span></p>
+                    </li>
+                </ul>
+
+                <ul class="collection with-header">
+                    <li class="collection-header">
+                        <h5>二、放假安排</h5>
+                    </li>
+                    <li class="collection-item">
+                        <p><span class="important">6月30日-7月1日</span> 放假2天<br>
+                           <span class="important">7月2日</span> 正常上班</p>
+                        <small class="grey-text">注：6月无31日，已修正日期</small>
+                    </li>
+                </ul>
+
+                <ul class="collection with-header">
+                    <li class="collection-header">
+                        <h5>三、节日福利</h5>
+                    </li>
+                    <li class="collection-item">
+                        <p>每人发放 <span class="important">粽子礼盒1份</span><br>
+                           发放时间：今日下午<br>
+                           领取方式：各班组负责人统一领取</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card-action center-align" style="padding: 1.5rem 0;">
+                <h4 class="green-text text-darken-2">
+                    <i class="material-icons tiny">emoji_emotions</i>
+                    端午安康，假期愉快！
+                </h4>
+            </div>
+        </div>
+    </div>
+
+<div class="fixed-action-btn">
+  <a href="https://surl.amap.com/hXRyg8N1tdOs" 
+     class="flat-btn" 
+     target="_blank">
+    <i class="material-icons">place</i>
+  </a>
+    </div>
+
+    <script src="js/materialize.min.js"></script>
+</body>
+</html>
