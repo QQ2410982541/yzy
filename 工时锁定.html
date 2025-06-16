@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>薪资计算器</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection" />
+    <style>
+    
+        /* 哔哩哔哩粉色主题相关颜色等设置 */
+        body {
+            background-color: #f5f0f5; /* 浅粉色背景 */
+            min-height: 100vh;
+        }
+
+       .calculator-card {
+            padding: 2rem;
+            margin: 2rem auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+            background: white;
+            max-width: 600px;
+        }
+
+       .input-field label {
+            color: #616161;
+        }
+
+       .input-field input:focus + label {
+            color: #f286ab!important; /* 粉色系激活颜色 */
+        }
+
+       .input-field input:focus {
+            border-bottom: 2px solid #f286ab!important; /* 粉色系激活边框 */
+            box-shadow: none!important;
+        }
+
+        /* 添加或修改这个样式规则，使图标在输入框获取焦点时变为粉色 */
+       .input-field input:focus + i.material-icons.prefix {
+            color: #f286ab!important; 
+        }
+
+       .btn-custom {
+            background-color: #f286ab; /* 粉色按钮 */
+            width: 100%;
+            margin-top: 1.5rem;
+            padding: 0 2rem;
+        }
+
+       .btn-custom:hover {
+            background-color: #e05c86; /* 深一点的粉色按钮悬停效果 */
+        }
+
+       .result-card {
+            background-color: #fde6ed; /* 浅粉色结果框背景 */
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+       .result-text {
+            color: #f286ab; /* 粉色结果文字颜色 */
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+       .section-title {
+            color: #424242;
+            border-left: 4px solid #f286ab; /* 粉色系标题左边框 */
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+        }
+
+       .input-hint {
+            font-size: 0.8rem;
+            color: #616161;
+            margin-top: -8px;
+        }
+
+       .divider-custom {
+            margin: 1.5rem 0;
+            border-color: #e0e0e0;
+        }
+
+       .attendance-rate {
+            font-size: 1rem;
+            color: #f286ab; /* 粉色系出勤率文字颜色 */
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="calculator-card">
+            <h5 class="section-title">实际工资以夜光科技有限公司为准</h5>
+
+            <!-- 出勤天数模块 -->
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="input-field">
+                        <i class="material-icons prefix">event</i>
+                        <input id="attendanceDays" type="number" value="22" min="0" max="31" step="0.5">
+                        <label for="attendanceDays">实际出勤天数</label>
+                    </div>
+                    <div class="input-hint">（建议值：22天）</div>
+                </div>
+
+                <div class="col s12 m6">
+                    <div class="input-field">
+                        <i class="material-icons prefix">event_available</i>
+                        <input id="standardDays" type="number" value="22" min="1" max="31" step="0.5">
+                        <label for="standardDays">标准出勤天数</label>
+                    </div>
+                    <div class="input-hint">（法定标准天数）</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 center-align">
+                    <div class="attendance-rate" id="attendanceRate">出勤率：100%</div>
+                    <button class="waves-effect waves-teal btn-flat" onclick="setFullAttendance()">
+                        <i class="material-icons">done_all</i>
+                        设为满勤
+                    </button>
+                </div>
+            </div>
+
+            <div class="divider divider-custom"></div>
+
+            <!-- 基本工资模块 -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">attach_money</i>
+                    <input id="baseSalary" type="number" value="2520">
+                    <label for="baseSalary">月基本工资</label>
+                </div>
+            </div>
+
+            <div class="divider divider-custom"></div>
+
+            <!-- 加班模块 -->
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <i class="material-icons prefix">access_time</i>
+                    <input id="regularOvertime" type="number" value="0">
+                    <label for="regularOvertime">普通加班时长（小时）</label>
+                </div>
+
+                <div class="input-field col s12 m6">
+                    <i class="material-icons prefix">trending_up</i>
+                    <input id="regularRate" type="number" value="21.8" readonly>
+                    <label for="regularRate">普通加班时薪</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <i class="material-icons prefix">schedule</i>
+                    <input id="specialOvertime" type="number" value="0">
+                    <label for="specialOvertime">特殊加班时长（小时）</label>
+                </div>
+
+                <div class="input-field col s12 m6">
+                    <i class="material-icons prefix">priority_high</i>
+                    <input id="specialRate" type="number" value="29" readonly>
+                    <label for="specialRate">特殊加班时薪</label>
+                </div>
+            </div>
+
+            <!-- 计算按钮 -->
+            <button class="btn waves-effect waves-light btn-custom" onclick="calculateSalary()">
+                立即计算
+                <i class="material-icons right">calculate</i>
+            </button>
+
+            <!-- 结果展示 -->
+            <div class="result-card">
+                <p class="center-align result-text" id="result">0.00</p>
+                <p class="center-align grey-text">基本工资 + 加班工资</p>
+            </div>
+        </div>
+    </div>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        // 初始化Materialize组件
+        M.AutoInit();
+
+        // 计算出勤率
+        function calculateAttendanceRate() {
+            const actual = parseFloat(document.getElementById('attendanceDays').value);
+            const standard = parseFloat(document.getElementById('standardDays').value);
+            if (standard <= 0) return 0;
+            return (actual / standard) * 100;
+        }
+
+        // 更新出勤率显示
+        function updateAttendanceRate() {
+            const rate = calculateAttendanceRate();
+            document.getElementById('attendanceRate').textContent = `出勤率：${rate.toFixed(2)}%`;
+        }
+
+        // 设为满勤
+        function setFullAttendance() {
+            const standardDays = parseFloat(document.getElementById('standardDays').value);
+            document.getElementById('attendanceDays').value = standardDays;
+            updateAttendanceRate();
+        }
+
+        // 计算薪资
+        function calculateSalary() {
+            // 获取出勤数据
+            const attendance = {
+                actual: parseFloat(document.getElementById('attendanceDays').value),
+                standard: parseFloat(document.getElementById('standardDays').value)
+            };
+
+            // 验证出勤数据
+            if (attendance.standard <= 0) {
+                M.toast({
+                    html: '<i class="material-icons">error</i> 标准天数需大于0',
+                    classes: 'red accent-2',
+                    displayLength: 2000
+                });
+                return;
+            }
+
+            if (attendance.actual > attendance.standard) {
+                M.toast({
+                    html: '<i class="material-icons">error</i> 实际天数不应超过标准天数',
+                    classes: 'red accent-2',
+                    displayLength: 2000
+                });
+                return;
+            }
+
+            // 计算调整后的基本工资
+            const baseSalary = parseFloat(document.getElementById('baseSalary').value);
+            const adjustedBase = baseSalary * (attendance.actual / attendance.standard);
+
+            // 获取加班数据
+            const regularHours = parseFloat(document.getElementById('regularOvertime').value);
+            const specialHours = parseFloat(document.getElementById('specialOvertime').value);
+            const regularRate = parseFloat(document.getElementById('regularRate').value);
+            const specialRate = parseFloat(document.getElementById('specialRate').value);
+
+            // 计算总薪资
+            const total = adjustedBase +
+                (regularHours * regularRate) +
+                (specialHours * specialRate);
+
+            // 显示结果
+            const resultElement = document.getElementById('result');
+            resultElement.style.transform ='scale(1.1)';
+            setTimeout(() => {
+                resultElement.style.transform ='scale(1)';
+                resultElement.textContent = total.toFixed(2);
+            }, 300);
+        }
+
+        // 监听出勤天数变化
+        document.getElementById('attendanceDays').addEventListener('input', updateAttendanceRate);
+        document.getElementById('standardDays').addEventListener('input', updateAttendanceRate);
+
+        // 初始化出勤率显示
+        updateAttendanceRate();
+    </script>
+</body>
+
+</html>
